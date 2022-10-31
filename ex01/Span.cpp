@@ -1,12 +1,11 @@
+#include <algorithm>//sort, max_element, min_element
 #include "Span.hpp"
 
 Span::Span(void) {}
 
 Span::Span(unsigned int max) : mMax(max) {}
 
-Span::Span(const Span &other) {
-    *this = other;
-}
+Span::Span(const Span &other) : mStorage(other.mStorage), mMax(other.mMax) {}
 
 Span &Span::operator=(const Span &other) {
     mMax = other.mMax;
@@ -33,7 +32,7 @@ int Span::shortestSpan(void) {
 	int minDistance = longestSpan();
 	for (std::size_t i = 0; i < temp.size() - 1; ++i) {
 		if (temp[i + 1] - temp[i] < minDistance)
-			minDistance = temp[i + 1] - temp[i];
+			minDistance = temp[i + 1] - temp[i];/*reset*/
 	}
 	return minDistance;
 }
